@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://qnxaksq2mcsn"]
+
+[ext_resource type="Script" uid="uid://520n7gwlgts6" path="res://Common/GameManager/gameManager.gd" id="1_y3ako"]
+[ext_resource type="PackedScene" uid="uid://byyags5386h5y" path="res://HUD/canvas/canvas_game.tscn" id="2_o8la6"]
+[ext_resource type="PackedScene" uid="uid://dcuuswcew4nmk" path="res://Common/GameManager/Camera.tscn" id="3_yx5vh"]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("camera")]
+script = ExtResource("1_y3ako")
+camera = NodePath("Camera2D")
+
+[node name="CanvasGame" parent="." instance=ExtResource("2_o8la6")]
+layer = 128
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("game") instance=ExtResource("3_yx5vh")]
+game = NodePath("..")

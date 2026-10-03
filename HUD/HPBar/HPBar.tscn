@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0qoat2lcntt6"]
+
+[ext_resource type="Script" uid="uid://812t2t5kmq8e" path="res://HUD/HPBar/hp_bar2.gd" id="1_nutf0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5lb8"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(1, 0, 0, 0.392157)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_muwmk"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_roe7b"]
+bg_color = Color(0.125, 1, 0, 1)
+border_color = Color(0, 0.859375, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_nutf0")
+
+[node name="damage_bar" type="ProgressBar" parent="."]
+z_index = 100
+z_as_relative = false
+offset_left = -69.0
+offset_top = -12.0
+offset_right = 125.0
+offset_bottom = 17.0
+scale = Vector2(0.717375, 0.717375)
+theme_override_styles/background = SubResource("StyleBoxFlat_h5lb8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_muwmk")
+value = 90.0
+show_percentage = false
+
+[node name="hp_bar" type="ProgressBar" parent="damage_bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_roe7b")
+value = 70.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="damage_bar"]
+wait_time = 5.0
+
+[connection signal="timeout" from="damage_bar/Timer" to="." method="_on_timer_timeout"]

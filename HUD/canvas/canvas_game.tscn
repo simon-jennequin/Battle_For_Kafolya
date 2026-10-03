@@ -1,0 +1,233 @@
+[gd_scene load_steps=15 format=3 uid="uid://byyags5386h5y"]
+
+[ext_resource type="Script" uid="uid://vybote2er6rp" path="res://HUD/canvas/canvas_game.gd" id="1_fom48"]
+[ext_resource type="PackedScene" uid="uid://bk0t20ed4p57e" path="res://HUD/cadre/cadre_hud.tscn" id="2_fom48"]
+[ext_resource type="FontFile" uid="uid://eh4at4g23sl3" path="res://HUD/pseudo/LuckiestGuy-Regular.ttf" id="3_256rw"]
+[ext_resource type="AudioStream" uid="uid://qoy7yo56aslj" path="res://Common/GameManager/ready_game.wav" id="4_0fsjt"]
+[ext_resource type="AudioStream" uid="uid://53q5pa6ircfv" path="res://Common/GameManager/go_game.wav" id="5_12xuj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qvh5g"]
+font = ExtResource("3_256rw")
+font_size = 200
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_256rw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(312, 280)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qvh5g"]
+resource_name = "end"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0fsjt"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(312, 760), Vector2(312, 280)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.766667, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_12xuj"]
+_data = {
+&"RESET": SubResource("Animation_256rw"),
+&"end": SubResource("Animation_qvh5g"),
+&"start": SubResource("Animation_0fsjt")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_0fsjt"]
+font = ExtResource("3_256rw")
+font_size = 200
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_vcrtf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_12xuj"]
+resource_name = "start"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6f4vy"]
+_data = {
+&"RESET": SubResource("Animation_vcrtf"),
+&"start": SubResource("Animation_12xuj")
+}
+
+[node name="CanvasGame" type="CanvasLayer" node_paths=PackedStringArray("container")]
+script = ExtResource("1_fom48")
+container = NodePath("Control/HBoxContainer")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 56.0
+offset_bottom = 56.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 300
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Cadre_hud" parent="Control/HBoxContainer" instance=ExtResource("2_fom48")]
+layout_mode = 2
+
+[node name="Cadre_hud2" parent="Control/HBoxContainer" instance=ExtResource("2_fom48")]
+layout_mode = 2
+
+[node name="Cadre_hud3" parent="Control/HBoxContainer" instance=ExtResource("2_fom48")]
+layout_mode = 2
+
+[node name="Cadre_hud4" parent="Control/HBoxContainer" instance=ExtResource("2_fom48")]
+layout_mode = 2
+
+[node name="ready" type="Label" parent="."]
+offset_left = 312.0
+offset_top = 280.0
+offset_right = 1050.0
+offset_bottom = 481.0
+text = "Ready ?"
+label_settings = SubResource("LabelSettings_qvh5g")
+
+[node name="readyAnimation" type="AnimationPlayer" parent="ready"]
+libraries = {
+&"": SubResource("AnimationLibrary_12xuj")
+}
+autoplay = "start"
+
+[node name="go" type="Label" parent="."]
+offset_left = 466.0
+offset_top = 259.5
+offset_right = 814.0
+offset_bottom = 460.5
+pivot_offset = Vector2(174, 100.5)
+text = "GO !"
+label_settings = SubResource("LabelSettings_0fsjt")
+horizontal_alignment = 1
+
+[node name="go_animation" type="AnimationPlayer" parent="go"]
+libraries = {
+&"": SubResource("AnimationLibrary_6f4vy")
+}
+
+[node name="readyStream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0fsjt")
+
+[node name="go_stream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_12xuj")
+
+[connection signal="animation_finished" from="ready/readyAnimation" to="." method="_on_ready_animation_animation_finished"]
+[connection signal="animation_finished" from="go/go_animation" to="." method="_on_go_animation_animation_finished"]

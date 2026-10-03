@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://coqt4pbhs5kfl"]
+
+[ext_resource type="Texture2D" uid="uid://bgwkbmnkm6yej" path="res://Menu/pause/asset/InscriptionBois.png" id="1_is72i"]
+[ext_resource type="FontFile" uid="uid://eh4at4g23sl3" path="res://HUD/pseudo/LuckiestGuy-Regular.ttf" id="2_p5g8u"]
+[ext_resource type="Script" uid="uid://bf80fbgmf20pk" path="res://Menu/Selection/slot/team_button.gd" id="2_pmjxv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pmjxv"]
+font = ExtResource("2_p5g8u")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_1si8r"]
+font = ExtResource("2_p5g8u")
+font_size = 70
+
+[node name="team_button" type="TextureRect"]
+offset_right = 514.0
+offset_bottom = 206.0
+texture = ExtResource("1_is72i")
+script = ExtResource("2_pmjxv")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 81.0
+offset_right = 299.0
+offset_bottom = 132.0
+text = "Teamplay:"
+label_settings = SubResource("LabelSettings_pmjxv")
+
+[node name="state" type="Label" parent="."]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 70.0
+offset_right = 412.0
+offset_bottom = 141.0
+text = "OFF"
+label_settings = SubResource("LabelSettings_1si8r")

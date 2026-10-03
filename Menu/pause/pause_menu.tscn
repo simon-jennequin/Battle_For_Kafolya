@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2qlytk7pe534"]
+
+[ext_resource type="Texture2D" uid="uid://g865v4ckd5d0" path="res://Menu/pause/asset/retour2.png" id="1_8emaq"]
+[ext_resource type="Script" uid="uid://cqbyrcbfei5ox" path="res://Menu/pause/pause_menu.gd" id="1_ga08h"]
+[ext_resource type="Texture2D" uid="uid://ccbttd1pohise" path="res://Menu/pause/asset/retour.png" id="2_ga08h"]
+[ext_resource type="Texture2D" uid="uid://bae3q0w7igohn" path="res://Menu/pause/asset/selection2.png" id="3_epb47"]
+[ext_resource type="Texture2D" uid="uid://dssvtctwhkv0r" path="res://Menu/pause/asset/Selection.png" id="4_tarkv"]
+[ext_resource type="FontFile" uid="uid://eh4at4g23sl3" path="res://HUD/pseudo/LuckiestGuy-Regular.ttf" id="5_ero3t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gu1t8"]
+font = ExtResource("5_ero3t")
+font_size = 50
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_ga08h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.196078)
+
+[node name="back" type="TextureButton" parent="."]
+offset_left = 500.0
+offset_top = 112.0
+offset_right = 2520.0
+offset_bottom = 962.0
+scale = Vector2(0.129789, 0.129789)
+texture_normal = ExtResource("1_8emaq")
+texture_focused = ExtResource("2_ga08h")
+
+[node name="selection" type="TextureButton" parent="."]
+offset_left = 483.0
+offset_top = 349.0
+offset_right = 2503.0
+offset_bottom = 1199.0
+scale = Vector2(0.135123, 0.135123)
+texture_normal = ExtResource("3_epb47")
+texture_focused = ExtResource("4_tarkv")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_left = 28.0
+offset_top = 28.0
+offset_right = 174.0
+offset_bottom = 79.0
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+text = "Slifos
+"
+label_settings = SubResource("LabelSettings_gu1t8")
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="selection" to="." method="_on_selection_pressed"]

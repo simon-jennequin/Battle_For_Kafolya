@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://vjgjjhxtxvj4"]
+
+[ext_resource type="Script" uid="uid://cqcb4cj5xv5v8" path="res://Common/Base/cd.gd" id="1_ykpi3"]
+[ext_resource type="Texture2D" uid="uid://bdmgk3ebhqil" path="res://Entities/Chobushi/asset/contre_creation/contre_creation6.png" id="2_b2uil"]
+[ext_resource type="Texture2D" uid="uid://cvgdnx8a0nk1c" path="res://Entities/Chobushi/asset/cd/tp_icon.png" id="3_g41c6"]
+[ext_resource type="Texture2D" uid="uid://4jy1odj53348" path="res://Entities/bbguin/asset/sad/sad1.png" id="4_xspaq"]
+[ext_resource type="Texture2D" uid="uid://eiqam6b8gtgl" path="res://Entities/Peaceguin/asset/cd/dash.png" id="5_u1jb2"]
+[ext_resource type="Texture2D" uid="uid://cpq85u4vs50ea" path="res://Entities/Breez/GBDF/Asset/Idle/4.png" id="6_m2dw4"]
+[ext_resource type="Texture2D" uid="uid://g5st5hxnx835" path="res://Entities/Breez/Wind/asset/3.png" id="7_b877w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wb8qk"]
+bg_color = Color(0, 0, 0, 0.196078)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dlym"]
+bg_color = Color(1, 0, 0, 0.588235)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="CD_SPELL" type="ProgressBar" node_paths=PackedStringArray("cd_bar")]
+offset_right = 101.0
+offset_bottom = 101.0
+theme_override_styles/background = SubResource("StyleBoxFlat_wb8qk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4dlym")
+value = 60.0
+fill_mode = 3
+show_percentage = false
+script = ExtResource("1_ykpi3")
+cd_bar = NodePath(".")
+
+[node name="breez1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(52, 49)
+scale = Vector2(0.0772591, 0.0772591)
+texture = ExtResource("7_b877w")
+
+[node name="breez2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(53, 50)
+scale = Vector2(0.0584822, 0.0584822)
+texture = ExtResource("6_m2dw4")
+
+[node name="chobushi1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(56, 131)
+scale = Vector2(0.141561, 0.141561)
+texture = ExtResource("3_g41c6")
+
+[node name="chobushi2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(51, 52)
+scale = Vector2(0.0408841, 0.0408841)
+texture = ExtResource("2_b2uil")
+
+[node name="peaceguin1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(50, 52)
+scale = Vector2(0.154842, 0.154842)
+texture = ExtResource("5_u1jb2")
+
+[node name="peaceguin2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(50, 52)
+scale = Vector2(0.0868433, 0.0868433)
+texture = ExtResource("4_xspaq")

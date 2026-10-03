@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cafs1fnj5o6cb"]
+
+[ext_resource type="Texture2D" uid="uid://bgwkbmnkm6yej" path="res://Menu/pause/asset/InscriptionBois.png" id="1_xqhhw"]
+[ext_resource type="Script" uid="uid://4nbnmqmlr8vx" path="res://Menu/Selection/slot/friendlyfire_button.gd" id="2_sy1ux"]
+[ext_resource type="FontFile" uid="uid://eh4at4g23sl3" path="res://HUD/pseudo/LuckiestGuy-Regular.ttf" id="3_2nq00"]
+[ext_resource type="AudioStream" uid="uid://di1yxonmni6tg" path="res://Menu/Selection/sound/button.wav" id="4_nv6pl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nv6pl"]
+font = ExtResource("3_2nq00")
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_3bnpl"]
+font = ExtResource("3_2nq00")
+font_size = 70
+
+[node name="friendlyfire_button" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_xqhhw")
+script = ExtResource("2_sy1ux")
+
+[node name="normal" type="Label" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 77.0
+offset_right = 347.0
+offset_bottom = 128.0
+text = "FriendlyFire :"
+label_settings = SubResource("LabelSettings_nv6pl")
+
+[node name="state" type="Label" parent="."]
+layout_mode = 0
+offset_left = 347.0
+offset_top = 66.0
+offset_right = 460.0
+offset_bottom = 137.0
+text = "OFF"
+label_settings = SubResource("LabelSettings_3bnpl")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_nv6pl")

@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxgak5dacaq4g"]
+
+[ext_resource type="Texture2D" uid="uid://d4k73b6qh1qyq" path="res://VFX/Jump/asset/1.png" id="1_mu2j0"]
+[ext_resource type="Texture2D" uid="uid://c7nekaffwox3o" path="res://VFX/Jump/asset/2.png" id="2_273vn"]
+[ext_resource type="Texture2D" uid="uid://ubwj33j0wwk5" path="res://VFX/Jump/asset/3.png" id="3_kbjcu"]
+[ext_resource type="Texture2D" uid="uid://e242hscl451l" path="res://VFX/Jump/asset/4.png" id="4_qx0tp"]
+[ext_resource type="Script" uid="uid://b8g5uautvsmym" path="res://VFX/Jump/jumpvfx.gd" id="5_273vn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3wf0p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mu2j0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_273vn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kbjcu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qx0tp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.19209e-07, -24)
+scale = Vector2(0.315197, 0.315197)
+sprite_frames = SubResource("SpriteFrames_3wf0p")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
+script = ExtResource("5_273vn")

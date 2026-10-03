@@ -1,0 +1,72 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
+[application]
+
+config/name="Battle for Kafolya"
+run/main_scene="uid://be65ty7u0pofv"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+run/max_fps=240
+config/icon="uid://cw5b1d3jfbjji"
+config/windows_native_icon="res://kafo_icon3.ico"
+
+[autoload]
+
+SceneManager="*res://autoload/SceneManager.gd"
+MusicManager="*res://autoload/MusicManager.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=3
+window/stretch/mode="canvas_items"
+
+[dotnet]
+
+project/assembly_name="Kafolya"
+
+[filesystem]
+
+import/fbx2gltf/enabled.android=true
+import/fbx2gltf/enabled.web=true
+import/blender/enabled.android=true
+import/blender/enabled.web=true
+
+[input]
+
+left={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":-1.0,"script":null)
+]
+}
+right={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":1.0,"script":null)
+]
+}
+jump={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+]
+}
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/lossless_compression/force_png=true
+camera/depth_of_field/depth_of_field_bokeh_shape=2
+camera/depth_of_field/depth_of_field_bokeh_quality=3
+camera/depth_of_field/depth_of_field_use_jitter=true

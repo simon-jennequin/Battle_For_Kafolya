@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://qfal7kklrdkk"]
+
+[ext_resource type="Script" uid="uid://mu2knohphitq" path="res://Entities/Chobushi/Contre/contre.gd" id="1_v68fd"]
+[ext_resource type="Texture2D" uid="uid://ocflb1pmfovk" path="res://Entities/Chobushi/asset/contre_explosion/ReflectAtkEffetExploChobushi1.png" id="2_46prs"]
+[ext_resource type="Texture2D" uid="uid://csg55jwibmanu" path="res://Entities/Chobushi/asset/contre_explosion/ReflectAtkEffetExploChobushi2.png" id="4_sg6te"]
+[ext_resource type="Texture2D" uid="uid://b1hrwd17o0bv5" path="res://Entities/Chobushi/asset/contre_explosion/ReflectAtkEffetExploChobushi3.png" id="6_087g6"]
+[ext_resource type="Texture2D" uid="uid://cfngett37ve6p" path="res://Entities/Chobushi/asset/contre_explosion/ReflectAtkEffetExploChobushi4.png" id="8_mei7r"]
+[ext_resource type="Script" uid="uid://djhb1qiqc0fqx" path="res://Entities/Chobushi/Contre/contre_hitbox.gd" id="8_n4t6k"]
+[ext_resource type="Texture2D" uid="uid://topvgum7x0l" path="res://Entities/Chobushi/asset/contre_explosion/ReflectAtkEffetExploChobushi5.png" id="10_d0gva"]
+[ext_resource type="Texture2D" uid="uid://cb58ifyc3le3a" path="res://Entities/Chobushi/asset/contre_explosion/ReflectAtkEffetExploChobushi6.png" id="12_aujn1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4sj0p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_46prs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sg6te")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_087g6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mei7r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_d0gva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_aujn1")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jhm0y"]
+radius = 97.7446
+
+[node name="Node2D" type="Node2D"]
+z_index = 1
+script = ExtResource("1_v68fd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.087, 0.087)
+sprite_frames = SubResource("SpriteFrames_4sj0p")
+animation = &"explosion"
+autoplay = "explosion"
+frame = 5
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("8_n4t6k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(12, -20)
+scale = Vector2(1.68921, 1.90313)
+shape = SubResource("CircleShape2D_jhm0y")
+disabled = true
+debug_color = Color(1, 0, 0, 0.42)
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

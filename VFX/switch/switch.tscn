@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://cfu2u1vcmfb0p"]
+
+[ext_resource type="Script" uid="uid://c62v66tmcgkow" path="res://VFX/switch/switch.gd" id="1_k6ura"]
+[ext_resource type="Texture2D" uid="uid://jugsplxome7i" path="res://VFX/switch/asset/1.png" id="1_s4p15"]
+[ext_resource type="Texture2D" uid="uid://b8syjlga6ve36" path="res://VFX/switch/asset/2.png" id="2_k6ura"]
+[ext_resource type="Texture2D" uid="uid://b1bj4utcwv53s" path="res://VFX/switch/asset/3.png" id="3_0r7fg"]
+[ext_resource type="Texture2D" uid="uid://b0yv178m2251o" path="res://VFX/switch/asset/4.png" id="4_d6n6h"]
+[ext_resource type="Texture2D" uid="uid://b53snjvdwy42l" path="res://VFX/switch/asset/5.png" id="5_pf4qc"]
+[ext_resource type="Texture2D" uid="uid://c4h8wli5wy8pa" path="res://VFX/switch/asset/6.png" id="6_rvthn"]
+[ext_resource type="AudioStream" uid="uid://dncoygsp83cjl" path="res://Entities/sound/switch_sfx.wav" id="8_0r7fg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wrfui"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s4p15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_k6ura")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0r7fg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d6n6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pf4qc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rvthn")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_k6ura")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+scale = Vector2(0.329016, 0.329016)
+sprite_frames = SubResource("SpriteFrames_wrfui")
+autoplay = "default"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_0r7fg")
+autoplay = true
+panning_strength = 3.0

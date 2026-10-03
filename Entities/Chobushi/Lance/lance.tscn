@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7aclndjewpjy"]
+
+[ext_resource type="Script" uid="uid://dhs00525ck6yf" path="res://Entities/Chobushi/Lance/lance_state.gd" id="1_1pkq5"]
+[ext_resource type="Texture2D" uid="uid://6xkpo2sypl0r" path="res://Entities/Chobushi/asset/LanceChobushi.png" id="1_rk5u5"]
+[ext_resource type="Script" uid="uid://cjcnrtmmi0ko3" path="res://Entities/Chobushi/Lance/hitbox_lance.gd" id="3_yh8cw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1pkq5"]
+radius = 64.2485
+height = 192.746
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yh8cw"]
+radius = 103.133
+height = 562.543
+
+[sub_resource type="AudioStream" id="AudioStream_yh8cw"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = -1
+collision_mask = 128
+script = ExtResource("1_1pkq5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.106659, 0.106659)
+texture = ExtResource("1_rk5u5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.00001, 1)
+rotation = 3.14159
+scale = Vector2(0.155646, -0.983574)
+shape = SubResource("CapsuleShape2D_1pkq5")
+
+[node name="hitbox_lance" type="Area2D" parent="."]
+scale = Vector2(0.106659, 0.106659)
+collision_mask = 193
+script = ExtResource("3_yh8cw")
+
+[node name="hitbox_shape" type="CollisionShape2D" parent="hitbox_lance"]
+position = Vector2(-18.7514, -581.294)
+shape = SubResource("CapsuleShape2D_yh8cw")
+debug_color = Color(1, 0, 0, 0.42)
+
+[node name="stream" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStream_yh8cw")
+panning_strength = 2.0
+
+[connection signal="body_entered" from="hitbox_lance" to="hitbox_lance" method="_on_body_entered"]

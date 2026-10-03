@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://chlgowrqjfpjw"]
+
+[ext_resource type="Script" uid="uid://brkn873ddisdm" path="res://HUD/pseudo/pseudo.gd" id="1_shrlm"]
+[ext_resource type="FontFile" uid="uid://eh4at4g23sl3" path="res://HUD/pseudo/LuckiestGuy-Regular.ttf" id="2_qknum"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qknum"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_qknum"]
+font = ExtResource("2_qknum")
+font_size = 25
+
+[node name="CenterContainer" type="CenterContainer"]
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+use_top_left = true
+script = ExtResource("1_shrlm")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+clip_contents = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qknum")
+
+[node name="Pseudo" type="Label" parent="PanelContainer"]
+z_index = 10
+layout_mode = 2
+text = "slifos"
+label_settings = SubResource("LabelSettings_qknum")
+horizontal_alignment = 1
+vertical_alignment = 1

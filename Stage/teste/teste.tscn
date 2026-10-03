@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpfbdbm1s6wms"]
+
+[ext_resource type="Texture2D" uid="uid://dbvgovq80hl62" path="res://Stage/teste/asset/long_map.jpg" id="2_irarn"]
+[ext_resource type="PackedScene" uid="uid://pd478yjm8aln" path="res://Stage/teste/floor.tscn" id="3_uqtkt"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+z_index = -10
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 240)
+scale = Vector2(4.11225, 4.41818)
+
+[node name="LongMap" type="Sprite2D" parent="."]
+position = Vector2(737, 359)
+scale = Vector2(0.596484, 0.596484)
+texture = ExtResource("2_irarn")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_uqtkt")]
+position = Vector2(732, 678)
+collision_layer = 2

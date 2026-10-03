@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://br61mcuuwsvix"]
+
+[ext_resource type="Texture2D" uid="uid://g5st5hxnx835" path="res://Entities/Breez/Wind/asset/3.png" id="1_e8tt0"]
+[ext_resource type="Script" uid="uid://cqcb4cj5xv5v8" path="res://Common/Base/cd.gd" id="2_nthpq"]
+
+[node name="cd_wind" type="TextureProgressBar" node_paths=PackedStringArray("cd_bar")]
+offset_left = -34.0
+offset_top = -37.0
+offset_right = 1369.0
+offset_bottom = 1285.0
+scale = Vector2(0.0562155, 0.0562155)
+value = 50.0
+fill_mode = 2
+texture_under = ExtResource("1_e8tt0")
+texture_progress = ExtResource("1_e8tt0")
+tint_under = Color(1, 1, 1, 0.243137)
+script = ExtResource("2_nthpq")
+cd_bar = NodePath(".")
+cooldown = 3.0
+
+[node name="Timer" type="Timer" parent="."]

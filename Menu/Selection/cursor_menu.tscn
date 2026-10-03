@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://64y1epapp3x7"]
+
+[ext_resource type="Texture2D" uid="uid://de36rmavpo746" path="res://HUD/Cursor/cursor_b.png" id="1_a2b2b"]
+[ext_resource type="Script" uid="uid://dlblfuy67ijeq" path="res://Menu/Selection/cursor_menu.gd" id="1_u80bh"]
+[ext_resource type="FontFile" uid="uid://eh4at4g23sl3" path="res://HUD/pseudo/LuckiestGuy-Regular.ttf" id="2_17oba"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gr6ij"]
+font = ExtResource("2_17oba")
+font_size = 50
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Cursor" type="TextureRect"]
+z_index = 50
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.0646165, 0.0646165)
+texture = ExtResource("1_a2b2b")
+script = ExtResource("1_u80bh")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+z_index = 11
+layout_mode = 0
+offset_left = 220.715
+offset_top = 402.48
+offset_right = 366.715
+offset_bottom = 453.48
+scale = Vector2(4.57741, 4.57741)
+
+[node name="Label" type="Label" parent="CenterContainer"]
+z_index = 11
+layout_mode = 2
+text = "slifos"
+label_settings = SubResource("LabelSettings_gr6ij")

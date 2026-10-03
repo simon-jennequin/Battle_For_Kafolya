@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyniw0o0jsoi8"]
+
+[ext_resource type="Script" uid="uid://r6r38yoaqxwa" path="res://VFX/Hit_hard/hit_hard.gd" id="1_aylyb"]
+[ext_resource type="Texture2D" uid="uid://biy4pypm23oeb" path="res://VFX/Hit_hard/1.png" id="1_yaepa"]
+[ext_resource type="Texture2D" uid="uid://cfvn1n1fwacpc" path="res://VFX/Hit_hard/2.png" id="2_aylyb"]
+[ext_resource type="Texture2D" uid="uid://cuw75l28hu5ee" path="res://VFX/Hit_hard/3.png" id="3_s002g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iunlj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yaepa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_aylyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s002g")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_aylyb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.369281, 0.369281)
+sprite_frames = SubResource("SpriteFrames_iunlj")
+autoplay = "default"

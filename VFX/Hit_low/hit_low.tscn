@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvf6p3uwh63g0"]
+
+[ext_resource type="Script" uid="uid://b2ufwrc8t1y7" path="res://VFX/Hit_low/hit_low.gd" id="1_6ip6v"]
+[ext_resource type="Texture2D" uid="uid://cvcda4shqlcvj" path="res://VFX/Hit_low/1.png" id="1_nnoit"]
+[ext_resource type="Texture2D" uid="uid://c16ioi4b23ofr" path="res://VFX/Hit_low/2.png" id="2_6ip6v"]
+[ext_resource type="Texture2D" uid="uid://fyd8k4kqyykb" path="res://VFX/Hit_low/3.png" id="3_7jp7t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lbqwv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nnoit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6ip6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7jp7t")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_6ip6v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.208475, 0.208475)
+sprite_frames = SubResource("SpriteFrames_lbqwv")
+autoplay = "default"

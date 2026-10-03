@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6ldrufk20f5y"]
+
+[ext_resource type="Script" uid="uid://cq7s2sepfr0tw" path="res://Menu/Selection/selection.gd" id="1_lfb4s"]
+[ext_resource type="Texture2D" uid="uid://xe75akt70m8a" path="res://Menu/Selection/asset/fond.png" id="2_p35xb"]
+[ext_resource type="PackedScene" uid="uid://ct36vo1hso6v2" path="res://Menu/Selection/slot/slot.tscn" id="3_p35xb"]
+[ext_resource type="PackedScene" uid="uid://bxbo6v3n3d5tc" path="res://Menu/Selection/Cadre.tscn" id="4_x84ge"]
+[ext_resource type="PackedScene" uid="uid://coqt4pbhs5kfl" path="res://Menu/Selection/slot/team_button.tscn" id="5_e4prt"]
+[ext_resource type="PackedScene" uid="uid://cafs1fnj5o6cb" path="res://Menu/Selection/slot/friendlyfire_button.tscn" id="6_ljmnh"]
+
+[node name="Selection" type="Node2D" node_paths=PackedStringArray("camera")]
+script = ExtResource("1_lfb4s")
+camera = NodePath("Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(0.332108, 0.332108)
+texture = ExtResource("2_p35xb")
+
+[node name="Slot" parent="." instance=ExtResource("3_p35xb")]
+offset_left = -159.0
+offset_top = -338.0
+offset_right = -20.0
+offset_bottom = -199.0
+code_perso = "peaceguin"
+
+[node name="Slot2" parent="." instance=ExtResource("3_p35xb")]
+offset_left = -373.0
+offset_top = -338.0
+offset_right = -234.0
+offset_bottom = -199.0
+code_perso = "chobushi"
+
+[node name="Slot3" parent="." instance=ExtResource("3_p35xb")]
+offset_left = -592.0
+offset_top = -338.0
+offset_right = -453.0
+offset_bottom = -199.0
+code_perso = "breez"
+
+[node name="Cadre1" parent="." instance=ExtResource("4_x84ge")]
+visible = false
+position = Vector2(-485, 210)
+scale = Vector2(0.38, 0.38)
+
+[node name="Cadre2" parent="." instance=ExtResource("4_x84ge")]
+visible = false
+position = Vector2(-159, 210)
+scale = Vector2(0.38, 0.38)
+
+[node name="Cadre3" parent="." instance=ExtResource("4_x84ge")]
+visible = false
+position = Vector2(159, 210)
+scale = Vector2(0.38, 0.38)
+
+[node name="Cadre4" parent="." instance=ExtResource("4_x84ge")]
+visible = false
+position = Vector2(483, 210)
+scale = Vector2(0.38, 0.38)
+
+[node name="team_button" parent="." instance=ExtResource("5_e4prt")]
+offset_left = 223.0
+offset_top = -359.0
+offset_right = 737.0
+offset_bottom = -153.0
+scale = Vector2(0.40313, 0.40313)
+
+[node name="friendlyfire_button" parent="." instance=ExtResource("6_ljmnh")]
+visible = false
+offset_left = 430.0
+offset_top = -359.0
+offset_right = 944.0
+offset_bottom = -153.0
+scale = Vector2(0.422971, 0.422971)
+
+[node name="team_mode" type="AudioStreamPlayer2D" parent="."]

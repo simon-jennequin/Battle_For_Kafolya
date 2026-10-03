@@ -1,0 +1,88 @@
+[gd_scene load_steps=17 format=3 uid="uid://dil06dk0ha4yi"]
+
+[ext_resource type="Texture2D" uid="uid://bgx8x5tnfrwlg" path="res://HUD/cadre/asset/Cadre.png" id="1_p7t5u"]
+[ext_resource type="Texture2D" uid="uid://ddm3e1vo15don" path="res://HUD/cadre/asset/breez/cadre_breez1.png" id="2_ychnp"]
+[ext_resource type="Texture2D" uid="uid://dguyfrkfr4lso" path="res://HUD/cadre/asset/breez/cadre_breez2.png" id="3_by1b4"]
+[ext_resource type="Texture2D" uid="uid://m6m6hs7i87de" path="res://HUD/cadre/asset/breez/cadre_breez3.png" id="4_rlon4"]
+[ext_resource type="Texture2D" uid="uid://rpnhm7xayb7f" path="res://HUD/cadre/asset/breez/cadre_breez4.png" id="5_6030q"]
+[ext_resource type="Texture2D" uid="uid://btpp3u4wc6sj5" path="res://HUD/cadre/asset/chobushi/cadre_chobushi1.png" id="6_s3jrk"]
+[ext_resource type="Texture2D" uid="uid://dfae4jskyvyc" path="res://HUD/cadre/asset/chobushi/cadre_chobushi2.png" id="7_gbp4k"]
+[ext_resource type="Texture2D" uid="uid://dawunqppes0gp" path="res://HUD/cadre/asset/chobushi/cadre_chobushi3.png" id="8_mbwq2"]
+[ext_resource type="Texture2D" uid="uid://c431vlib62x5p" path="res://HUD/cadre/asset/chobushi/cadre_chobushi4.png" id="9_a7q11"]
+[ext_resource type="Texture2D" uid="uid://ctv4vicvt1inl" path="res://HUD/cadre/asset/peaceguin/cadre_peaceguin1.png" id="10_4eq8d"]
+[ext_resource type="Texture2D" uid="uid://0cunqi1hdk36" path="res://HUD/cadre/asset/peaceguin/cadre_peaceguin2.png" id="11_2v57v"]
+[ext_resource type="Texture2D" uid="uid://dch8k3ay7wqla" path="res://HUD/cadre/asset/peaceguin/cadre_peaceguin3.png" id="12_agou8"]
+[ext_resource type="Texture2D" uid="uid://ckn2j6gt3poov" path="res://HUD/cadre/asset/peaceguin/cadre_peaceguin4.png" id="13_xjx4t"]
+[ext_resource type="Texture2D" uid="uid://dae7qrnwtvepy" path="res://HUD/cadre/asset/peaceguin/cadre_peaceguin5.png" id="14_8bxwg"]
+[ext_resource type="Texture2D" uid="uid://cqo7bsct4v2qg" path="res://HUD/cadre/asset/peaceguin/cadre_peaceguin6.png" id="15_qe3qh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5rygj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ychnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_by1b4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rlon4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6030q")
+}],
+"loop": true,
+"name": &"breez",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_s3jrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gbp4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mbwq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_a7q11")
+}],
+"loop": true,
+"name": &"chobushi",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_4eq8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2v57v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_agou8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_xjx4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8bxwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_qe3qh")
+}],
+"loop": true,
+"name": &"peaceguin",
+"speed": 7.0
+}]
+
+[node name="cadre_breez" type="Node2D"]
+
+[node name="cadre" type="Sprite2D" parent="."]
+texture = ExtResource("1_p7t5u")
+
+[node name="animation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5rygj")
+animation = &"breez"
+autoplay = "breez"
+frame_progress = 0.949506

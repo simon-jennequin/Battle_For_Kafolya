@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1wwsmi0fl8rb"]
+
+[ext_resource type="Script" uid="uid://cqcb4cj5xv5v8" path="res://Common/Base/cd.gd" id="1_ag4cg"]
+[ext_resource type="Texture2D" uid="uid://lj5jrn3j2jlq" path="res://Entities/Breez/GBDF/Asset/Idle/1.png" id="2_bt7tb"]
+
+[node name="cd_GBDF" type="TextureProgressBar" node_paths=PackedStringArray("cd_bar")]
+z_index = 10
+offset_left = -22.0
+offset_top = -40.0
+offset_right = 1162.0
+offset_bottom = 1633.0
+scale = Vector2(0.0376905, 0.0376905)
+value = 40.0
+fill_mode = 3
+texture_under = ExtResource("2_bt7tb")
+texture_progress = ExtResource("2_bt7tb")
+tint_under = Color(1, 1, 1, 0.223529)
+script = ExtResource("1_ag4cg")
+cd_bar = NodePath(".")
+cooldown = 4.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://dja3u1gsfyavh"]
+
+[ext_resource type="Script" uid="uid://b74yk148t2fcx" path="res://Menu/Selection/pseudo_button.gd" id="1_4lmbp"]
+[ext_resource type="FontFile" uid="uid://eh4at4g23sl3" path="res://HUD/pseudo/LuckiestGuy-Regular.ttf" id="1_u0xbr"]
+[ext_resource type="AudioStream" uid="uid://di1yxonmni6tg" path="res://Menu/Selection/sound/button.wav" id="3_73nrr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73nrr"]
+bg_color = Color(0.574219, 0.574219, 0.574219, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u0xbr"]
+bg_color = Color(1, 0, 0, 0.392157)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_73nrr"]
+font = ExtResource("1_u0xbr")
+font_size = 75
+
+[node name="Pseudo_button" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/focus = SubResource("StyleBoxFlat_73nrr")
+theme_override_styles/normal = SubResource("StyleBoxFlat_u0xbr")
+icon_alignment = 1
+script = ExtResource("1_4lmbp")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.5
+offset_top = -38.0
+offset_right = 109.5
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+text = "Slifos"
+label_settings = SubResource("LabelSettings_73nrr")
+
+[node name="audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_73nrr")

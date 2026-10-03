@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://dyn4d85drarh5"]
+
+[ext_resource type="Texture2D" uid="uid://ft6a7d6wmnei" path="res://Stage/Mystik/asset/Portail/PortailApparition0001.png" id="1_o5xvi"]
+[ext_resource type="Script" uid="uid://dykwcomfwwnx6" path="res://Stage/Mystik/portail.gd" id="1_svskt"]
+[ext_resource type="Texture2D" uid="uid://bdmwlghy3opba" path="res://Stage/Mystik/asset/Portail/PortailApparition0002.png" id="2_svskt"]
+[ext_resource type="Texture2D" uid="uid://3prarvqj1d5k" path="res://Stage/Mystik/asset/Portail/PortailApparition0003.png" id="3_r083g"]
+[ext_resource type="Texture2D" uid="uid://yrjda3ju6ag5" path="res://Stage/Mystik/asset/Portail/PortailApparition0005.png" id="4_wfng2"]
+[ext_resource type="Texture2D" uid="uid://cnqf01pfavpr3" path="res://Stage/Mystik/asset/Portail/PortailIdle0001.png" id="5_mdfri"]
+[ext_resource type="Texture2D" uid="uid://dlp0wvwya1guh" path="res://Stage/Mystik/asset/Portail/PortailIdle0002.png" id="6_qway5"]
+[ext_resource type="Texture2D" uid="uid://bv4hpw8d43ph8" path="res://Stage/Mystik/asset/Portail/PortailIdle0003.png" id="7_rbvmp"]
+[ext_resource type="Texture2D" uid="uid://n5o78cwctx7c" path="res://Stage/Mystik/asset/Portail/PortailIdle0004.png" id="8_lyet1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tnxtf"]
+radius = 82.0
+height = 284.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ti76w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o5xvi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_svskt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r083g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wfng2")
+}],
+"loop": false,
+"name": &"creation",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wfng2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r083g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_svskt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_o5xvi")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"destruction",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_mdfri")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qway5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rbvmp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lyet1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_svskt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_tnxtf")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(250, 38)
+scale = Vector2(0.234299, 0.234299)
+sprite_frames = SubResource("SpriteFrames_ti76w")
+animation = &"destruction"
+autoplay = "creation"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

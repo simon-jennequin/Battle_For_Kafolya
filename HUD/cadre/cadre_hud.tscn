@@ -1,0 +1,196 @@
+[gd_scene load_steps=13 format=3 uid="uid://bk0t20ed4p57e"]
+
+[ext_resource type="Script" uid="uid://bn4lfa3bhk0kr" path="res://HUD/cadre/cadre_hud.gd" id="1_ushiw"]
+[ext_resource type="PackedScene" uid="uid://dil06dk0ha4yi" path="res://HUD/cadre/cadre_perso.tscn" id="2_w8e1j"]
+[ext_resource type="FontFile" uid="uid://eh4at4g23sl3" path="res://HUD/pseudo/LuckiestGuy-Regular.ttf" id="3_nuu8e"]
+[ext_resource type="Texture2D" uid="uid://bmywex3phphx2" path="res://HUD/cadre/asset/Vie.png" id="4_w8e1j"]
+[ext_resource type="PackedScene" uid="uid://vjgjjhxtxvj4" path="res://HUD/cadre/cd_spell.tscn" id="5_r02dw"]
+[ext_resource type="PackedScene" uid="uid://dboq3ycww78h0" path="res://HUD/switch/cd_switch.tscn" id="6_r02dw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45787"]
+bg_color = Color(1, 0, 0, 0.196078)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xb0lc"]
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_w8e1j"]
+font = ExtResource("3_nuu8e")
+font_size = 32
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytkap"]
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r02dw"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_top = 8.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_45787"]
+font = ExtResource("3_nuu8e")
+font_size = 32
+
+[node name="Cadre_hud" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ushiw")
+positions_cd = [Vector2(5, 25), Vector2(35, 25), Vector2(65, 25), Vector2(95, 25)]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-52, 1)
+scale = Vector2(0.469796, 0.469796)
+
+[node name="bg" type="Panel" parent="Node2D"]
+offset_left = -6.0
+offset_top = -102.0
+offset_right = 407.0
+offset_bottom = 6.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_45787")
+
+[node name="hp1" type="ProgressBar" parent="Node2D"]
+offset_left = 80.0
+offset_top = -52.0
+offset_right = 330.0
+offset_bottom = -25.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_xb0lc")
+value = 50.0
+show_percentage = false
+
+[node name="PV1" type="CenterContainer" parent="Node2D"]
+offset_left = 195.83
+offset_top = -51.086
+offset_right = 235.83
+offset_bottom = -11.086
+scale = Vector2(0.842884, 0.842884)
+
+[node name="label_pv1" type="Label" parent="Node2D/PV1"]
+layout_mode = 2
+text = "10"
+label_settings = SubResource("LabelSettings_w8e1j")
+
+[node name="hp2" type="ProgressBar" parent="Node2D"]
+offset_left = 101.0
+offset_top = -23.0
+offset_right = 329.0
+offset_bottom = -6.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ytkap")
+value = 40.0
+show_percentage = false
+
+[node name="PV2" type="CenterContainer" parent="Node2D"]
+offset_left = 278.844
+offset_top = -23.4144
+offset_right = 318.844
+offset_bottom = 16.5856
+scale = Vector2(0.583905, 0.583905)
+
+[node name="label_pv2" type="Label" parent="Node2D/PV2"]
+layout_mode = 2
+text = "10"
+label_settings = SubResource("LabelSettings_w8e1j")
+
+[node name="cadre" parent="Node2D" instance=ExtResource("2_w8e1j")]
+scale = Vector2(0.45, 0.45)
+
+[node name="CenterContainer" type="CenterContainer" parent="Node2D"]
+offset_left = 145.0
+offset_top = -96.0
+offset_right = 258.0
+offset_bottom = -56.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Node2D/CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r02dw")
+
+[node name="Label" type="Label" parent="Node2D/CenterContainer/PanelContainer"]
+layout_mode = 2
+text = "Pseudo"
+label_settings = SubResource("LabelSettings_45787")
+
+[node name="pt1" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(-101, -57)
+scale = Vector2(0.123559, 0.123559)
+texture = ExtResource("4_w8e1j")
+
+[node name="pt2" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(-76, -75)
+scale = Vector2(0.123559, 0.123559)
+texture = ExtResource("4_w8e1j")
+
+[node name="pt3" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(-51, -92)
+scale = Vector2(0.123559, 0.123559)
+texture = ExtResource("4_w8e1j")
+
+[node name="pt" type="Sprite2D" parent="Node2D"]
+position = Vector2(-70.2433, -85.1433)
+scale = Vector2(0.312333, 0.304977)
+texture = ExtResource("4_w8e1j")
+
+[node name="score" type="CenterContainer" parent="Node2D"]
+offset_left = -89.4005
+offset_top = -89.4005
+offset_right = -49.4005
+offset_bottom = -49.4005
+
+[node name="score" type="Label" parent="Node2D/score"]
+layout_mode = 2
+text = "10"
+label_settings = SubResource("LabelSettings_w8e1j")
+
+[node name="CD_SPELL" parent="Node2D" instance=ExtResource("5_r02dw")]
+offset_left = 100.043
+offset_top = 10.6429
+offset_right = 201.043
+offset_bottom = 111.643
+scale = Vector2(0.7, 0.7)
+
+[node name="CD_SPELL2" parent="Node2D" instance=ExtResource("5_r02dw")]
+offset_left = 180.93
+offset_top = 10.6429
+offset_right = 281.93
+offset_bottom = 111.643
+scale = Vector2(0.7, 0.7)
+
+[node name="CD_SPELL3" parent="Node2D" instance=ExtResource("5_r02dw")]
+offset_left = 285.23
+offset_top = 8.51433
+offset_right = 386.23
+offset_bottom = 109.515
+scale = Vector2(0.35, 0.35)
+
+[node name="CD_SPELL4" parent="Node2D" instance=ExtResource("5_r02dw")]
+offset_left = 285.23
+offset_top = 48.9574
+offset_right = 386.23
+offset_bottom = 149.958
+scale = Vector2(0.35, 0.35)
+
+[node name="cd_switch" parent="." instance=ExtResource("6_r02dw")]
+position = Vector2(122, -13)
+scale = Vector2(0.457294, 0.457294)

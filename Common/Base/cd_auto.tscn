@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7ek8cm73nvfi"]
+
+[ext_resource type="Script" uid="uid://cldm8mt1q2lvx" path="res://Common/Base/cd_auto.gd" id="1_csarb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fp7ix"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro7j1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="cd_auto" type="ProgressBar" node_paths=PackedStringArray("cd_bar")]
+offset_right = 4.0
+offset_bottom = 27.0
+rotation = -1.5708
+scale = Vector2(2.47624, 4.07535)
+theme_override_styles/background = SubResource("StyleBoxFlat_fp7ix")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ro7j1")
+fill_mode = 2
+show_percentage = false
+script = ExtResource("1_csarb")
+cd_bar = NodePath(".")

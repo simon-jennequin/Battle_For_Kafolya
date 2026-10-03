@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://1dw8kjf1ik2k"]
+
+[ext_resource type="Texture2D" uid="uid://cii85chmc1s5" path="res://Entities/Breez/lantern/Attack/LanterneAttaqueL0001.png" id="1_5aydb"]
+[ext_resource type="Texture2D" uid="uid://ba2x3iimk8lqu" path="res://Entities/Breez/lantern/Idle/1.png" id="1_rh7lw"]
+[ext_resource type="Texture2D" uid="uid://coq0y251ilfa8" path="res://Entities/Breez/lantern/Attack/LanterneAttaqueL0002.png" id="2_1k8ui"]
+[ext_resource type="Texture2D" uid="uid://bu17r38pgtuyw" path="res://Entities/Breez/lantern/Idle/2.png" id="2_rjhot"]
+[ext_resource type="Texture2D" uid="uid://cknyg2v3n6o1m" path="res://Entities/Breez/lantern/Attack/LanterneAttaqueL0003.png" id="3_ia75u"]
+[ext_resource type="Texture2D" uid="uid://bd03lht06vxqm" path="res://Entities/Breez/lantern/Idle/3.png" id="3_qn2sa"]
+[ext_resource type="Texture2D" uid="uid://bokpf22026n8w" path="res://Entities/Breez/lantern/Attack/LanterneAttaqueL0004.png" id="4_beob7"]
+[ext_resource type="Texture2D" uid="uid://c1moipdw424b0" path="res://Entities/Breez/lantern/Idle/4.png" id="4_watia"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f7lvg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5aydb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1k8ui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ia75u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_beob7")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rh7lw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rjhot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qn2sa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_watia")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="Lanterne" type="AnimatedSprite2D"]
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_f7lvg")
+animation = &"attack"
+autoplay = "idle"

@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://db4syg7q2fnyx"]
+
+[ext_resource type="Script" uid="uid://cr8c6s0x6sdbv" path="res://VFX/Eject/eject.gd" id="1_6omy7"]
+[ext_resource type="Texture2D" uid="uid://2vulqja2rtay" path="res://VFX/Eject/asset/1.png" id="1_k8hsx"]
+[ext_resource type="Texture2D" uid="uid://df5g6d1wd7t6u" path="res://VFX/Eject/asset/2.png" id="2_6omy7"]
+[ext_resource type="Texture2D" uid="uid://bmghpw240hpxv" path="res://VFX/Eject/asset/3.png" id="3_vgbcg"]
+[ext_resource type="Texture2D" uid="uid://dsiifkl5a1yuu" path="res://VFX/Eject/asset/4.png" id="4_82tv1"]
+[ext_resource type="Texture2D" uid="uid://d2pu8e3uxdkt0" path="res://VFX/Eject/asset/5.png" id="5_3v7bw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_grn6y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k8hsx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6omy7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vgbcg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_82tv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3v7bw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Node2D" type="Node2D"]
+z_index = -1
+scale = Vector2(1.79064, 1.79064)
+script = ExtResource("1_6omy7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.139717, 0.139717)
+sprite_frames = SubResource("SpriteFrames_grn6y")
+autoplay = "default"
