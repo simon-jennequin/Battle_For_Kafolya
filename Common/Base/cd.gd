@@ -2,11 +2,8 @@ extends ProgressBar
 
 @export var cd_bar:ProgressBar
 
-@export var cooldown:float
 
-var t_start:float=-1000.0
 
-var SPELL:=0.0
 var last_visible
 func assignate(color,signal_changed,perso,spell,cd,cd_max,is_primary):
 	signal_changed.connect(func(perso,spell,cd,cd_max,is_primary):changed(perso,spell,cd,cd_max,is_primary))

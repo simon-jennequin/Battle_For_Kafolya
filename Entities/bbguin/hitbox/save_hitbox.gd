@@ -13,5 +13,4 @@ func desactivate():
 func _on_body_entered(body: Node2D) -> void:
 	if body == own.papaguin:
 		own.emit_signal("bb_saved")
-		print("emit")
 	

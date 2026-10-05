@@ -9,7 +9,6 @@ extends CenterContainer
 const LUCKIEST_GUY_REGULAR = preload("res://HUD/pseudo/LuckiestGuy-Regular.ttf")
 var camera
 var width 
-var padding :=10
 var is_ready = false
 func _ready() -> void:
 	label.label_settings = LabelSettings.new()

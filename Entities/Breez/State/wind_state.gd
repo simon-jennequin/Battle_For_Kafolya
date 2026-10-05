@@ -1,7 +1,6 @@
 extends STATE
 var state=0
 var direction
-const BREEZ_WIND = preload("res://Entities/Breez/Wind/breez_wind.wav")
 
 func enter(_prev):
 	state= 0

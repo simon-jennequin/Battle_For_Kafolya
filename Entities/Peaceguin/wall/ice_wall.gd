@@ -9,7 +9,6 @@ const WALL_CREATION = preload("res://Entities/Peaceguin/sound/wall_creation.mp3"
 @onready var feet_marker: Marker2D = $feetMarker
 
 const WALL_DESTRUCTION = preload("res://Entities/Peaceguin/sound/wall_destruction.mp3")
-var gravity=2000
 var couleur
 var game
 static func create(perso,force,dir,pos):

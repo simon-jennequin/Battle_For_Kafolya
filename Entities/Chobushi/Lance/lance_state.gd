@@ -10,7 +10,6 @@ const SLASH = preload("res://Entities/Chobushi/sound/slash.wav")
 const SLASH_HIT = preload("res://Entities/Chobushi/sound/slash_hit.wav")
 const LAUNCH = preload("res://Entities/Chobushi/sound/launch.wav")
 const LAUNCH_HIT = preload("res://Entities/Chobushi/sound/launch_hit.wav")
-const TP = preload("res://Entities/Chobushi/sound/tp.wav")
 const CANCEL = preload("res://Entities/Chobushi/sound/cancel.wav")
 @onready var sprite: Sprite2D = $Sprite2D
 
@@ -19,7 +18,6 @@ const CANCEL = preload("res://Entities/Chobushi/sound/cancel.wav")
 @onready var hitbox: Area2D = $hitbox_lance
 
 var rayon = 100
-var freezing =false
 func ur_mine(perso):
 	own = perso
 	layer = perso.layer
@@ -91,7 +89,6 @@ func launch(dir,force):
 	self.direction = dir
 	velocity = speed*dir
 	hitbox.activate()
-	freezing=false
 func attack(dir):
 	layer = own.layer
 	stream.stream = SLASH

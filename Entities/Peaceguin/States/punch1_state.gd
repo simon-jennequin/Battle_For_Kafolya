@@ -5,6 +5,15 @@ var distance = 100
 var punch_hitbox
 var direction
 var state = 0
+
+func setup():
+	own.go_punch2.connect(_on_go_punch2)
+
+func _on_go_punch2():
+	if own.current != self: return
+	if own.animation.frame == 4 or state == 1:
+		own.change_state("punch2")
+
 func enter(prev):
 	state = 0
 	own.animation.speed_scale = 1
@@ -34,7 +43,6 @@ func enter(prev):
 		a = 0.5
 		own.animation.flip_h = true
 	dir = Vector2(a,b).normalized()
-	own.go_punch2.connect(func(): if own.animation.frame ==4 or state==1:own.change_state("punch2"))
 func update(_delta):
 	punch_hitbox.global_position = own.global_position + dir*distance
 	if own.animation.frame>=1 and state==0:punch_hitbox.activate(1,dir)

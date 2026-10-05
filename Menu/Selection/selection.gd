@@ -2,9 +2,6 @@ extends SCENE
 var all_id = []
 var all_devices = []
 var all_colors = ["blue","red","green","yellow"]
-const GAME = preload("res://Common/GameManager/Game.tscn")
-var y = 180
-var all_pos = [Vector2(-180,y),Vector2(-460,y),Vector2(180,y),Vector2(460,y)]
 var all_ids = [0,1,2,3]
 var all_profiles = ["Slifos","Xeto","POULET","Yoxams","Baptoufs","Lila"]
 @onready var all_slot = [$Slot,$Slot2,$Slot3,$team_button,$friendlyfire_button]

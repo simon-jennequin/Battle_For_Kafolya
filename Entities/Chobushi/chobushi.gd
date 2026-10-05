@@ -2,9 +2,7 @@ extends ENTITY
 class_name CHOBUSHI
 @onready var lance = $Lance
 
-var atk
 
-var contre
 var is_counter = false
 var contre_damage = 0
 signal contre_activate

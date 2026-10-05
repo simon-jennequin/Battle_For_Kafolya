@@ -23,7 +23,6 @@ func _on_body_entered(body: Node2D) -> void:
 	var direction = (body.global_position-own.global_position).normalized()
 	var force = (float(own.contre_damage)/float(20))*1400
 	
-	print("oui j ai mal,", force)
 	body.take_damage(own,own.contre_damage)
 	body.project(own,direction,force)
 	 # Replace with function body.

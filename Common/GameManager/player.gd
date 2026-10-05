@@ -10,7 +10,6 @@ var perso = null
 var perso2
 var persos = []
 var spawn_pos := Vector2.ZERO
-var viseur = Sprite2D.new()
 var a_was_pressed = false
 var pseudo :="Player"
 var auto_pressed = false
@@ -19,7 +18,6 @@ var spell2_pressed = false
 var switch_pressed = false
 var is_switch = false
 var is_dead = false
-var cadre_hud
 var s0=0
 var max_switch = 0
 var aimX
@@ -30,15 +28,10 @@ var game
 var color :="white"
 var d0 = 0
 var death_switch = false
-const SWAP1 = preload("res://Entities/sound/swap1.wav")
-const SWAP2 = preload("res://Entities/sound/swap2.wav")
 var can_play = false
-const CURSOR = preload("res://HUD/Cursor/cursor.tscn")
-var new_cursor
 var id
 var switch_time:float=0.0
 var cd_switch := 6.0
-const PAUSE_MENU = preload("res://Menu/pause/pause_menu.tscn")
 
 signal SPELL1_CHANGED
 signal SPELL2_CHANGED
@@ -73,16 +66,11 @@ func init(new_id,controller, new_persos_chose: Array,new_color,new_team,new_pseu
 	self.add_child(perso)
 	perso.parent = self
 	perso2.parent = self
-	print("perso 1 et 2",team)
 	
 	
 	
 	
 
-func set_active_perso(index: int):
-	for i in range(persos.size()):
-		persos[i].is_controlled = (i == index)
-	perso = persos[index]
 func _physics_process(delta: float) -> void:
 	
 	if death_switch and d0>0:
@@ -103,7 +91,6 @@ func controller_input():
 	if not manettes.has(id_manette):
 		return
 	
-	# Debug : afficher toutes les manettes connectées
 	
 
 	# Lecture des entrées (seulement si la manette est valide)
@@ -114,8 +101,6 @@ func controller_input():
 	
 	
 		
-	if Input.is_joy_button_pressed(id_manette, JOY_BUTTON_Y):
-		get_parent().start_round()
 		
 	if abs(axisX2)>0.2 or abs(axisY2)>0.2:
 		aimX= Input.get_joy_axis(id_manette, JOY_AXIS_RIGHT_X)
@@ -202,7 +187,7 @@ func calculate_cd(_delta):
 	emit_signal("SWITCH_CHANGED",switch_time)
 	emit_signal("SPELL1_CHANGED",perso,1,perso.SPELL1,perso.CD_SPELL1,true)
 	emit_signal("SPELL2_CHANGED",perso,2,perso.SPELL2,perso.CD_SPELL2,true)
-	emit_signal("SPELL3_CHANGED",perso2,1,perso2.SPELL1,perso2.CD_SPELL2,false)
+	emit_signal("SPELL3_CHANGED",perso2,1,perso2.SPELL1,perso2.CD_SPELL1,false)
 	emit_signal("SPELL4_CHANGED",perso2,2,perso2.SPELL2,perso2.CD_SPELL2,false)
 func _process(_delta: float) -> void:
 	if not can_play:return

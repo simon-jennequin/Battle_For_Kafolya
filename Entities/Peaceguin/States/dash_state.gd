@@ -7,6 +7,13 @@ var t0
 
 var state = 0
 
+func setup():
+	own.stop_dash.connect(_on_stop_dash)
+
+func _on_stop_dash():
+	if own.current != self: return
+	go_state2()
+
 func enter(_prev):
 	
 	var dash_hitbox = own.get_node("dash_hitbox")
@@ -29,7 +36,6 @@ func enter(_prev):
 	own.is_dash=true
 	t0 = Time.get_ticks_msec()
 	state=0
-	own.stop_dash.connect(func():go_state2())
 	
 func update(_delta):
 	own.direction = sens

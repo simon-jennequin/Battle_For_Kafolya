@@ -5,6 +5,10 @@ var own
 var nom:=""
 const FREEZ = preload("res://Entities/Peaceguin/freez/freez.tscn")
 
+func setup():
+	pass
+
+
 func init(perso):
 	own = perso
 
@@ -17,15 +21,6 @@ func update(_delta):
 	pass
 func exit(next):
 	if next!="":own.current = own.states[next]
-func go_normal():
-	if not own.is_on_floor() and own.velocity.y<0:
-		own.change_state("jump_asc")
-	elif not own.is_on_floor() and own.velocity.y>=0:
-		own.change_state("jump_dsc")
-	elif own.moving:
-		own.change_state("run")
-	elif not own.moving:
-		own.change_state("idle")
 func is_busy():
 	return false
 	

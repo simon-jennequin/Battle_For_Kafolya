@@ -5,10 +5,7 @@ class_name PEACEGUIN
 
 
 
-var punching1
-var punching2
 var order = 0
-var switch_up = false
 
 
 
@@ -55,7 +52,6 @@ func _physics_process(delta: float) -> void:
 	if AUTO<=0:
 		order=0
 	if mybb!=null and not mybb.is_saved:
-		print("visible")
 		cursor_bb.visible=true
 		cursor_bb.rotation = (global_position - mybb.global_position).angle() - deg_to_rad(40)
 		if global_position.x-mybb.global_position.x<0:cursor_bb.position = Vector2(70,45)

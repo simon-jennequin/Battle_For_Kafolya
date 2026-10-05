@@ -19,7 +19,6 @@ var position4:=Vector2(720,315)
 
 
 var start_pos = [position1,position2,position3,position4]
-@onready var music_player: AudioStreamPlayer2D = $music_player
 
 
 	

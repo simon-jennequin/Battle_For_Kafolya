@@ -1,19 +1,9 @@
 extends Camera2D
 
-@export var min_zoom := 0.5  # plus petit zoom (dézoome max)
-@export var max_zoom := 1   # plus grand zoom (zoome max)
-@export var padding := 200   # marge autour des joueurs
 @export var lerp_speed := 0.1 
-@onready var marker_right: Marker2D = $MarkerRight
-@onready var marker_left: Marker2D = $MarkerLeft
-const READY = preload("res://Common/font/ready.tscn")
-var ready_label
-const GO = preload("res://Common/font/go.tscn")
-var go_label
 
 var shake_amount =0
 var shake_strength 
-var distance_min = 1000
 @export var game:SCENE
 
 func _ready() -> void:
@@ -63,16 +53,6 @@ func update(players,delta):
 	elif (max_x-min_x)/get_weight()<0.60 and (max_y-min_y)/get_height()<0.25  and zoom.x<=1:
 		zoom=Vector2(zoom.x+delta*0.1,zoom.y+delta*0.1)
 
-func put_ready():
-	ready_label = READY.instantiate()
-	add_child(ready_label)
-func put_go():
-	go_label = GO.instantiate()
-	add_child(go_label)
-	
-func clear():
-	remove_child(ready_label)
-	remove_child(go_label)
 	
 	#zoom = zoom.lerp(target_zoom, lerp_speed)
 func get_border_right():
@@ -84,23 +64,6 @@ func get_height():
 	return get_viewport_rect().size.y*1/zoom.y
 func get_weight():
 	return get_viewport_rect().size.x*1/zoom.x
-func get_top():
-	var larger = get_viewport_rect().size.y*1/zoom.y
-	
-	return global_position.y-larger/2
-	
-func get_bot():
-	var larger = get_viewport_rect().size.y*1/zoom.y
-	
-	return global_position.y+larger/2
-func get_left():
-	var larger = get_viewport_rect().size.x*1/zoom.x
-	
-	return global_position.x-larger/2
-func get_right():
-	var larger = get_viewport_rect().size.x*1/zoom.x
-	
-	return global_position.x+larger/2
 func shake(duration,force):
 	shake_amount = duration
 	shake_strength = force

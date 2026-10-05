@@ -3,7 +3,7 @@ extends SCENE
 # Prélève les scènes nécessaires
 
 var player :=preload("res://Common/GameManager/player.tscn")
-var map = [preload("res://Stage/teste/teste.tscn"),preload("res://Stage/Mystik/Mystik.tscn")]
+var map = [preload("res://Stage/Mystik/Mystik.tscn")]
 
 
 @onready var canvas_game: CanvasLayer = $CanvasGame
@@ -14,19 +14,14 @@ var map = [preload("res://Stage/teste/teste.tscn"),preload("res://Stage/Mystik/M
 
 var all_player = []
 var all_id = []
-var ready0= 1000
-var go0 = 1000
 var end_round:= false
-var end0 = 3000
 var map_choose
 var starting = true
 var teamplay = false
 var friendlyfire = false
 var direct =false
 @onready var starting_node = [$CanvasGame,$Camera2D,$ending_round]
-var cadre_hud= {}
 
-const Identification = preload("res://Menu/Selection/identity.gd")
 
 func _ready() -> void:
 	
@@ -46,7 +41,7 @@ func _ready() -> void:
 	
 	
 func start_game(new_all_id,is_teamplay,is_friendlyfire):
-	var map_chosen = map[1].instantiate()
+	var map_chosen = map[0].instantiate()
 	all_id = new_all_id
 	teamplay = is_teamplay
 	friendlyfire = is_friendlyfire
@@ -63,27 +58,28 @@ func start_game(new_all_id,is_teamplay,is_friendlyfire):
 			index = end
 			end-=1
 			id.index = index
-		else:
+		elif start <= 3 - end:
+			index = start
+			start+=1
 			id.index = index
-			index=(index+1)*(-1)
+		else:
+			index = end
+			end-=1
+			id.index = index
 
 		id.start_position = map_chosen.start_pos[id.index]
 		canvas_game.all_cadre[id.index].assignate(id)
-		print(id.pseudo,map_chosen.start_pos[id.index],id.index,"oui c ma position initial")
 	start_round()
 	
 func start_round():
 	clear_scene()
 	starting = true
-	end0 = 3000
-	ready0=3000
 	Engine.time_scale = 1
 	end_round = false
 	
-	map_choose = map[1].instantiate()
+	map_choose = map[0].instantiate()
 	add_child(map_choose)
 	camera.implement_limit(map_choose)
-	var i = 0
 	for id in all_id:
 		
 		var play = player.instantiate()
@@ -92,18 +88,15 @@ func start_round():
 		add_child(play)
 		
 		canvas_game.all_cadre[id.index].setup(play)
-		i+=1
 	canvas_game.start()
 	
 func start_playing():
 	starting = false
 	
-	go0 = 1000
 	for player in all_player:
 		player.can_play=true
 func clear_scene():
 	all_player = []
-	var root := get_tree().current_scene
 	for child in self.get_children():
 		if not child in starting_node:child.queue_free()
 		

@@ -91,7 +91,6 @@ func _process(delta: float) -> void:
 			damage_bar.modulate.a=1
 			
 	elif appeared and hp_bar.modulate.a==1 and can_disapear:
-		print("start disapear")
 		appeared = false
 		timer.start()
 	elif disapeared and hp_bar.modulate.a>0:
@@ -111,6 +110,5 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	print("stop")
 	disapear()
 	

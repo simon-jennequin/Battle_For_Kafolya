@@ -1,28 +1,14 @@
 extends ENTITY
 class_name BREEZ
 
-@onready var lantern: Node2D = $Lantern
 
-var aiming=false
 
-var footstep_sounds = [
-
-preload("res://Entities/Breez/asset/pas 1/3.wav")
-,preload("res://Entities/Breez/asset/pas 1/4.wav")
-]
 @onready var windStream: AudioStreamPlayer2D = $windStream
 
-var jump_sounds =preload("res://Entities/Breez/asset/pas 1/jump2.wav")
-var land_sounds = [preload("res://Entities/Breez/asset/landing/land 2.wav"), preload("res://Entities/Breez/asset/landing/land 3.wav"), preload("res://Entities/Breez/asset/landing/land 4.wav")]
 @onready var footstep: AudioStreamPlayer2D = $footstep
-const FIRE_BREEZ = preload("res://Entities/Breez/FireBreez/fireBreez.tscn")
 const GBDF = preload("res://Entities/Breez/GBDF/GBDF.tscn")
 var grosse = null
 var wind = preload("res://Entities/Breez/Wind/wind.tscn")
-const flying_sound= preload("res://Entities/Breez/Wind/breez_wind.wav")
-var flying = false
-var flying_gravity =100
-var before_flying = 0
 var wind_direction
 var rayon :=100
 signal attack

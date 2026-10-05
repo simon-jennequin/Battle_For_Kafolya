@@ -3,8 +3,6 @@ extends CharacterBody2D
 
 class_name ENTITY
 
-static func all_characters():
-	return [preload("res://Entities/Breez/breez_entity.tscn"),preload("res://Entities/Chobushi/chobushi_entity.tscn"),preload("res://Entities/Peaceguin/peaceguin_entity.tscn")]
 
 @export var nom:String
 var is_controlled := true
@@ -28,7 +26,6 @@ var zone :float= 0.0
 
 
 @export var animation: AnimatedSprite2D 
-var is_stun = false
 
 
 
@@ -57,9 +54,7 @@ var is_aim = false
 
 
 var project0 = 0
-var is_project = false
 var moving_speed = 1
-var games
 
 
 var aimX := 0.0
@@ -89,8 +84,6 @@ signal go_down
 signal projected
 signal damaged
 
-var stamina = 100
-var regen = 20
 var team = 0
 var parent
 var couleur
@@ -163,13 +156,13 @@ func add_state(script,state):
 	var inst = script.new()
 	inst.own = self
 	states[state] = inst
+	inst.setup()
 
 func init(new_layer,new_game,color,new_player,new_team):
 	team = new_team
 	layer = new_layer
 	self.game = new_game
 	player = new_player
-	print("is_teamplay",new_game.teamplay)
 	if not new_game.teamplay:
 		if color=="red":
 			c = Color(1.5,1,1)
@@ -277,8 +270,6 @@ func move(dir: float):
 			footstream.stream = FOOTSTEP_TAP
 			footstream.pitch_scale = randf_range(intonation[0],intonation[1])
 			footstream.play()
-		var speed_factor = clamp(abs(direction), 0.0, 0.8)
-		var interval = lerp(0.6, 0.15, speed_factor)
 		
 			
 	
@@ -422,9 +413,3 @@ func sprite():
 		animation.modulate = Color(0.5,0.5,0.5,a)
 	else:
 		animation.modulate = Color(c.r,c.g,c.b,a)
-func can_use(mana_cost):
-	if stamina-mana_cost>=0:
-		return true
-	return false
-func use_mana(mana_cost):
-	stamina-=mana_cost

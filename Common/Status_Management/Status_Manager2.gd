@@ -12,8 +12,6 @@ var gravite
 var is_invincible = false
 var locks_jump = false
 
-var can_project = false
-
 var vulnerable
 func update(dt: float) -> void:
 	for status in active.keys():
@@ -60,7 +58,7 @@ func _recompute() -> void:
 		
 		locks_actions  = locks_actions  or active[status].locks_actions()
 		locks_movements = locks_movements or active[status].locks_movements()
-		locks_projections = can_project or active[status].locks_projections()
+		locks_projections = locks_projections or active[status].locks_projections()
 		is_invincible = is_invincible or active[status].is_invincible()
 		speed_mult *=active[status].get_speed()
 		vulnerable *= active[status].get_vulnerable()

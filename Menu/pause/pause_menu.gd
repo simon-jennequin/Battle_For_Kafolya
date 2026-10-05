@@ -2,7 +2,6 @@ extends CanvasLayer
 
 
 var own
-var prec_index :=0
 var button_index := 0
 var prev_y :=0.0
 @onready var all_buttons = [$back,$selection]

@@ -5,13 +5,20 @@ var idle
 
 
 const CONTRE_LAUNCH = preload("res://Entities/Chobushi/sound/contre_launch.wav")
+
+func setup():
+	own.contre_activate.connect(_on_contre_activate)
+
+func _on_contre_activate():
+	if own.current != self: return
+	own.change_state("contre_end")
+
 func enter(_prev):
 	var contre_stream = own.get_node("contre_stream")
 	contre_stream.stream = CONTRE_LAUNCH
 	contre_stream.pitch_scale = randf_range(0.8,1.2)
 	contre_stream.play()
 	own.animation.play("contre_creation")
-	own.contre_activate.connect(func():own.change_state("contre_end"))
 	
 	own.contre_damage = 10
 	t0 = Time.get_ticks_msec()

@@ -29,7 +29,6 @@ func destroy():
 	
 func collision():
 	if is_on_wall() :
-		print("oui")
 		velocity.x=-vx_before
 func take_damage(_attacker,_damage):
 	hp-=_damage

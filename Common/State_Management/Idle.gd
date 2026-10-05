@@ -18,5 +18,4 @@ func update(_delta):
 		own.change_state("run")
 	
 	
-func out(_next):
-	pass
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://duvk8b3gh5xyi"]
+[gd_scene format=3 uid="uid://duvk8b3gh5xyi"]
 
 [ext_resource type="Script" uid="uid://c8k4hj25ohd1f" path="res://Entities/Breez/breez.tres.gd" id="1_bbfxc"]
 [ext_resource type="Texture2D" uid="uid://bnel2jmiphmyd" path="res://Entities/Breez/asset/idle/idle1.png" id="2_4gihi"]
@@ -51,7 +51,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_r7tx0")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 10.0
 }, {
@@ -62,7 +62,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("11_o6mle")
 }],
-"loop": true,
+"loop": 1,
 "name": &"jump_asc",
 "speed": 5.0
 }, {
@@ -73,7 +73,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("15_nnh4i")
 }],
-"loop": true,
+"loop": 1,
 "name": &"jump_dsc",
 "speed": 5.0
 }, {
@@ -81,7 +81,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("18_ih7mc")
 }],
-"loop": false,
+"loop": 0,
 "name": &"jump_end",
 "speed": 5.0
 }, {
@@ -89,7 +89,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("20_10tr7")
 }],
-"loop": false,
+"loop": 0,
 "name": &"jump_start",
 "speed": 5.0
 }, {
@@ -106,7 +106,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("25_wpxwo")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run",
 "speed": 3.0
 }, {
@@ -123,7 +123,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("19_kkobg")
 }],
-"loop": false,
+"loop": 0,
 "name": &"wind_down",
 "speed": 10.0
 }, {
@@ -140,7 +140,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("16_bbfxc")
 }],
-"loop": false,
+"loop": 0,
 "name": &"wind_down_end",
 "speed": 10.0
 }, {
@@ -157,7 +157,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("23_3rcpv")
 }],
-"loop": false,
+"loop": 0,
 "name": &"wind_side",
 "speed": 10.0
 }, {
@@ -174,7 +174,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("20_d3grw")
 }],
-"loop": false,
+"loop": 0,
 "name": &"wind_side_end",
 "speed": 10.0
 }, {
@@ -191,7 +191,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("27_o6mle")
 }],
-"loop": false,
+"loop": 0,
 "name": &"wind_up",
 "speed": 10.0
 }, {
@@ -208,7 +208,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("24_jwx40")
 }],
-"loop": false,
+"loop": 0,
 "name": &"wind_up_end",
 "speed": 10.0
 }]
@@ -217,7 +217,7 @@ animations = [{
 radius = 326.0
 height = 1520.0
 
-[node name="Breez" type="CharacterBody2D" node_paths=PackedStringArray("switchStream", "footMarker", "animation", "footstream")]
+[node name="Breez" type="CharacterBody2D" unique_id=791773912 node_paths=PackedStringArray("switchStream", "footMarker", "animation", "footstream")]
 collision_mask = 192
 script = ExtResource("1_bbfxc")
 nom = "breez"
@@ -234,36 +234,36 @@ CD_AUTO = 1.2
 CD_SPELL1 = 4.0
 CD_SPELL2 = 4.0
 
-[node name="Animation" type="AnimatedSprite2D" parent="."]
+[node name="Animation" type="AnimatedSprite2D" parent="." unique_id=168157202]
 position = Vector2(-39, 8)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_1mrk6")
 animation = &"wind_down_end"
 offset = Vector2(270, -75)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=227663779]
 position = Vector2(-11, 0)
 scale = Vector2(0.0930362, 0.0973179)
 shape = SubResource("CapsuleShape2D_gpch8")
 
-[node name="Lantern" parent="." node_paths=PackedStringArray("idle_pos") instance=ExtResource("15_80wuf")]
+[node name="Lantern" parent="." unique_id=1793506182 node_paths=PackedStringArray("idle_pos") instance=ExtResource("15_80wuf")]
 position = Vector2(41.975, -77.6374)
 scale = Vector2(0.0643076, 0.0643076)
 animation = &"idle"
 script = ExtResource("29_yne3g")
 idle_pos = NodePath("../Marker2D")
 
-[node name="footstep" type="AudioStreamPlayer2D" parent="."]
+[node name="footstep" type="AudioStreamPlayer2D" parent="." unique_id=409589571]
 position = Vector2(-14.6, -1)
 
-[node name="footMarker" type="Marker2D" parent="."]
+[node name="footMarker" type="Marker2D" parent="." unique_id=2056161711]
 position = Vector2(-15, 67)
 gizmo_extents = 0.0
 
-[node name="switchStream" type="AudioStreamPlayer2D" parent="."]
+[node name="switchStream" type="AudioStreamPlayer2D" parent="." unique_id=969853775]
 stream = ExtResource("30_4gihi")
 
-[node name="cd_auto" parent="." node_paths=PackedStringArray("own") instance=ExtResource("35_lay3y")]
+[node name="cd_auto" parent="." unique_id=815637894 node_paths=PackedStringArray("own") instance=ExtResource("35_lay3y")]
 offset_left = -61.0
 offset_top = 98.0
 offset_right = -57.0
@@ -271,18 +271,18 @@ offset_bottom = 125.0
 cooldown = 1.0
 own = NodePath("..")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Marker2D" type="Marker2D" parent="." unique_id=155976271]
 position = Vector2(42, -73)
 
-[node name="Pseudo" parent="." node_paths=PackedStringArray("own") instance=ExtResource("36_nm70i")]
+[node name="Pseudo" parent="." unique_id=873813284 node_paths=PackedStringArray("own") instance=ExtResource("36_nm70i")]
 offset_top = -134.0
 offset_right = 15.0
 offset_bottom = -100.0
 own = NodePath("..")
 
-[node name="HP_Bar" parent="." node_paths=PackedStringArray("own") instance=ExtResource("33_haibk")]
+[node name="HP_Bar" parent="." unique_id=66340924 node_paths=PackedStringArray("own") instance=ExtResource("33_haibk")]
 position = Vector2(0, -100)
 own = NodePath("..")
 
-[node name="windStream" type="AudioStreamPlayer2D" parent="."]
+[node name="windStream" type="AudioStreamPlayer2D" parent="." unique_id=1360483608]
 stream = ExtResource("38_dkswn")

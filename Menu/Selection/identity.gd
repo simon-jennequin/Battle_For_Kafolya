@@ -81,7 +81,6 @@ func destroy():
 func take_pseudo():
 	pseudo = selection.all_profiles[0]
 	selection.all_profiles.remove_at(0)
-	print(selection.all_profiles)
 func take_color():
 	if color==null:
 		color = selection.all_colors[0]
@@ -145,10 +144,8 @@ func press_b():
 	elif len(persos)>0:
 		persos.remove_at(persos.size() - 1)
 		cadre.dispawn_chara()
-	print(persos)
 	
 func press_a():
-	print("press a")
 	var all_overlaps= []
 	var cursor_rect = cursor.get_global_rect()
 	
@@ -173,7 +170,6 @@ func press_a():
 			min = cursor_center.distance_to(overlaps.get_global_rect().get_center())
 			the_one = overlaps
 	if the_one!=null:the_one.cursor_interact(self)
-	print(all_overlaps	)
 	if not is_ready and len(persos)==2 and len(all_overlaps)==0:
 		is_ready=true
 		emit_signal("IS_READY")

@@ -10,7 +10,6 @@ class_name CADRE_HUD
 @onready var pt: Sprite2D = $Node2D/pt
 
 @onready var score: Label = $Node2D/score/score
-@export var positions_cd:Array
 
 @onready var all_cd = [$Node2D/CD_SPELL,$Node2D/CD_SPELL2,$Node2D/CD_SPELL3,$Node2D/CD_SPELL4]
 @onready var cd_switch = $cd_switch
@@ -66,7 +65,6 @@ func assignate(new_id):
 
 func setup(new_player):
 	player = new_player
-	player.cadre_hud = self
 	player.switched.connect(func():change_perso())
 	player.perso.damaged.connect(func():damage())
 	player.perso2.damaged.connect(func():damage())
@@ -77,16 +75,8 @@ func setup(new_player):
 	pt_3.visible= false
 	pt.visible = false
 	score.visible=false
-	if id.score==1:
-		pt_1.visible=true
-	elif id.score==2:
-		pt_1.visible= true
-		pt_2.visible= true
-	elif id.score==3:
-		pt_1.visible= true
-		pt_2.visible= true
-		pt_3.visible= true
-	elif id.score>3:
+	
+	if id.score>=1:
 		score.visible=true
 		score.text = str(id.score)
 		pt.visible = true
