@@ -1,6 +1,6 @@
 extends STATE
 
-var t0
+var elapsed := 0.0
 var idle
 
 
@@ -21,15 +21,15 @@ func enter(_prev):
 	own.animation.play("contre_creation")
 	
 	own.contre_damage = 10
-	t0 = Time.get_ticks_msec()
+	elapsed = 0.0
 	own.is_counter = true
 	
 	
 	
 
-func update(_delta):
-
-	if Time.get_ticks_msec()-t0>2000:
+func update(delta):
+	elapsed += delta
+	if elapsed>2.0:
 		own.change_state("contre_end")
 		
 	

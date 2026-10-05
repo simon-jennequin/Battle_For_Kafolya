@@ -18,7 +18,7 @@ var spell2_pressed = false
 var switch_pressed = false
 var is_switch = false
 var is_dead = false
-var s0=0
+var switch_elapsed := 99.0
 var max_switch = 0
 var aimX
 var aimY
@@ -184,6 +184,7 @@ func calculate_cd(_delta):
 	if perso2!=null and perso2.SPELL1 >0 and not perso2.SPELL1_USED:perso2.SPELL1-=_delta
 	if perso2!=null and perso2.SPELL2 >0 and not perso2.SPELL2_USED:perso2.SPELL2-=_delta
 	if switch_time>0:switch_time-=_delta
+	switch_elapsed += _delta
 	emit_signal("SWITCH_CHANGED",switch_time)
 	emit_signal("SPELL1_CHANGED",perso,1,perso.SPELL1,perso.CD_SPELL1,true)
 	emit_signal("SPELL2_CHANGED",perso,2,perso.SPELL2,perso.CD_SPELL2,true)
@@ -231,11 +232,11 @@ func end_switch():
 func switch(pressed,activate):
 	if not activate or pressed: return
 	
-	if not is_switch and switch_time<=0 and Time.get_ticks_msec()-s0>2000:
+	if not is_switch and switch_time<=0 and switch_elapsed>2.0:
 		switch_time = cd_switch
 		max_switch = 0
 		is_switch = true
-		s0 = Time.get_ticks_msec()
+		switch_elapsed = 0.0
 		spawn_pos = perso.global_position + Vector2(perso.aimX,perso.aimY)*200
 		spawn_character(persos[(choix+1)%2],spawn_pos)
 		switch_character()
@@ -246,7 +247,7 @@ func switch(pressed,activate):
 		end_switch()
 
 func switching():
-	if is_switch and Time.get_ticks_msec()-s0>2000:
+	if is_switch and switch_elapsed>2.0:
 		if not perso.is_alive:
 			switch_character()
 

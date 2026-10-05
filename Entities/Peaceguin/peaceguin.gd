@@ -10,7 +10,6 @@ var order = 0
 
 
 var is_dash = false
-var t0 = 0
 const BBGUIN = preload("res://Entities/bbguin/bbguin_entity.tscn")
 var mybb
 signal stop_dash
@@ -69,7 +68,6 @@ func auto(_pressed,activate):
 		AUTO=CD_AUTO
 		
 		order=1
-		t0 = Time.get_ticks_msec()
 		change_state("punch1")
 	elif order==1 :
 		

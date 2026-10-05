@@ -3,8 +3,9 @@ extends ProgressBar
 @export var cd_bar:ProgressBar
 @export var cooldown:float
 @export var own:ENTITY
-var t_start := 0.0
+var elapsed := 0.0
 func _ready() -> void:
+	elapsed = cooldown
 	cd_bar.max_value = cooldown
 	cd_bar.z_index = 10
 	var stylebox = cd_bar.get_theme_stylebox("fill").duplicate()
@@ -21,17 +22,18 @@ func _ready() -> void:
 	
 	cd_bar.add_theme_stylebox_override("fill", stylebox)
 func is_ready():
-	if (Time.get_ticks_msec()-t_start)/1000>cooldown:
+	if elapsed>=cooldown:
 		return true
 	return false
 	
 func _process(delta: float) -> void:
+	elapsed += delta
 	if not is_ready():
 		
 		cd_bar.visible=true
-		cd_bar.value = cooldown-(Time.get_ticks_msec()-t_start)/1000
+		cd_bar.value = cooldown-elapsed
 	else:
 		cd_bar.visible = false
 
 func launch():
-	t_start=Time.get_ticks_msec()
+	elapsed = 0.0

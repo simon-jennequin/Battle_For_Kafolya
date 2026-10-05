@@ -1,5 +1,4 @@
 extends STATE
-var t0
 var speed=1200
 var angle_ajust = 90
 var lance_hitbox
@@ -8,7 +7,6 @@ var wall
 func enter(_prev):
 	lance_hitbox = own.get_node_or_null("lance_hitbox")
 	own.global_position = own.papaguin.global_position
-	t0 = Time.get_ticks_msec()
 	
 	direction = Vector2(own.aimX,own.aimY).normalized()
 	own.animation.play("attack")

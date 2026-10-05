@@ -5,9 +5,10 @@ extends Area2D
 @onready var hurtbox: CollisionShape2D = $CollisionShape2D
 
 var state = 0
-var t0 = 0
+var elapsed := 0.0
 func _physics_process(delta: float) -> void:
-	if state==2 and Time.get_ticks_msec()-t0>20000:
+	elapsed += delta
+	if state==2 and elapsed>20.0:
 		creation()
 	elif state==0 and not animation.is_playing():
 		idle()
@@ -24,7 +25,7 @@ func destruction():
 	hurtbox.set_deferred("disabled",true)
 	animation.play("destruction")
 	state=2
-	t0 = Time.get_ticks_msec()
+	elapsed = 0.0
 	
 
 		

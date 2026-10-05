@@ -1,7 +1,7 @@
 extends STATE
 
 var sens
-var t0
+var elapsed := 0.0
 
 
 
@@ -34,10 +34,11 @@ func enter(_prev):
 	dash_hitbox.position.x=sens*abs(dash_hitbox.position.x)
 	dash_hurtbox.position.x = sens*abs(dash_hurtbox.position.x)
 	own.is_dash=true
-	t0 = Time.get_ticks_msec()
+	elapsed = 0.0
 	state=0
 	
-func update(_delta):
+func update(delta):
+	elapsed += delta
 	own.direction = sens
 	if state!=2 and own.is_on_floor():own.velocity.x = 1500*sens
 	elif state!=2:own.velocity.x = 1000*sens
@@ -46,14 +47,14 @@ func update(_delta):
 		if not own.animation.is_playing():
 			go_state1()
 	elif state==1:
-		if Time.get_ticks_msec()-t0>1000:go_state2()
+		if elapsed>1.0:go_state2()
 	elif state==2:
 		if not own.animation.is_playing():own.change_state("idle")
 			
 func go_state1():
 	state =1
 	own.animation.play("dash_idle")
-	t0 = Time.get_ticks_msec()
+	elapsed = 0.0
 func go_state2():
 	own.velocity.x = 300*sens
 	var dash_hitbox = own.get_node("dash_hitbox")

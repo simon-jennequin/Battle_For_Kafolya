@@ -8,7 +8,6 @@ var distanceX
 var distanceY
 var distance_max = 250
 var is_saved = true
-var t0 = 0
 var all_hit = []
 
 signal bb_saved

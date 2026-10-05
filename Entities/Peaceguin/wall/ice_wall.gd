@@ -2,7 +2,6 @@ extends OBJECT
 class_name ICEWALL
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 var state = 0
-var t0
 @onready var hitbox: Area2D = $hitbox
 @onready var stream: AudioStreamPlayer2D = $stream
 const WALL_CREATION = preload("res://Entities/Peaceguin/sound/wall_creation.mp3")
@@ -26,7 +25,6 @@ func _ready():
 
 func spawn(perso,_force,dir,pos):
 	global_position = pos-feet_marker.global_position
-	t0 = Time.get_ticks_msec()
 	own = perso
 	game = own.game
 	layer = perso.layer

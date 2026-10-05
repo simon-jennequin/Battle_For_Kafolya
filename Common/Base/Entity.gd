@@ -53,7 +53,7 @@ var vy_before
 var is_aim = false
 
 
-var project0 = 0
+var eject_timer := 0.0
 var moving_speed = 1
 
 
@@ -75,7 +75,7 @@ var frottement = 500
 var project_duration = 0
 var physique = true
 var direction=-1
-var jump0=0
+var jump_timer := 0.0
 var was_on_floor = false
 var small_jump=false
 var player
@@ -97,7 +97,7 @@ var game
 @export var footstream:AudioStreamPlayer2D
 @export var step_frame :Array
 @export var intonation :Vector2
-var step0 = 0
+var step_timer := 0.0
 var vx_before
 var c = Color(1,1,1)
 
@@ -199,12 +199,15 @@ func _physics_process(delta):
 	# --- CDs (corrigé : accès dictionnaire)
 	
 	project_duration-=delta
+	eject_timer += delta
+	step_timer += delta
+	jump_timer += delta
 	if not is_on_floor():
 		velocity.y += (fast_fall_gravity*gravite if fast_falling else GRAVITY*gravite) * delta
 		velocity.x-=frottement*delta*velocity.normalized().x
-		if project_duration>0 and Time.get_ticks_msec()-project0>120:
+		if project_duration>0 and eject_timer>0.12:
 			EJECTVFX.play_at(global_position)
-			project0 = Time.get_ticks_msec()
+			eject_timer = 0.0
 		if jump_count==jump_max:
 			jump_count-=1
 	
@@ -264,8 +267,8 @@ func move(dir: float):
 	# Run anim
 	if is_on_floor():
 		moving_speed = lerp(1.0, 3.0, abs(dir))*speed_mult
-		if current==states["run"] and animation.frame in step_frame and Time.get_ticks_msec()-step0>150:
-			step0 = Time.get_ticks_msec()
+		if current==states["run"] and animation.frame in step_frame and step_timer>0.15:
+			step_timer = 0.0
 			
 			footstream.stream = FOOTSTEP_TAP
 			footstream.pitch_scale = randf_range(intonation[0],intonation[1])
@@ -288,7 +291,7 @@ func jump(pressed,activate):
 	
 	if jump_count > 0 and not pressed :
 		not_down()
-		jump0 = Time.get_ticks_msec()
+		jump_timer = 0.0
 		small_jump = true
 		release = false
 		emit_signal("jumped")
@@ -301,7 +304,7 @@ func jump(pressed,activate):
 		footstream.pitch_scale = randf_range(intonation[0],intonation[1])
 		footstream.play()
 		return true
-	elif Time.get_ticks_msec()-jump0>50 and not release and small_jump:
+	elif jump_timer>0.05 and not release and small_jump:
 		velocity.y=jump_force*0.95
 		small_jump = false
 	return false
