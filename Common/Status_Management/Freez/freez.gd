@@ -32,6 +32,8 @@ func exit():
 	inst.destroy()
 	own.status.suppr_status("freez")
 
+func get_speed():
+	return 0
 func locks_movements():
 	return true
 func locks_actions():

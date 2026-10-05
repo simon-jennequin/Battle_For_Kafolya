@@ -301,6 +301,7 @@ outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Cadre_hud" type="Control" unique_id=434381726]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

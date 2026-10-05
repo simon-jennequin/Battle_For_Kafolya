@@ -14,10 +14,9 @@ func _on_go_punch2():
 	if own.animation.frame == 4 or state == 1:
 		own.change_state("punch2")
 
-func enter(prev):
+func enter(_prev):
 	state = 0
 	own.animation.speed_scale = 1
-	prev.exit("")
 	punch_hitbox = own.get_node_or_null("punch_hitbox1")
 	direction = Vector2(own.aimX,own.aimY)
 	var a 

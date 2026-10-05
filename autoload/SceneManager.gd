@@ -85,3 +85,4 @@ func resume_game():
 
 	if pause_menu_instance:
 		pause_menu_instance.queue_free()
+		pause_menu_instance = null

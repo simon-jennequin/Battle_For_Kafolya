@@ -53,10 +53,16 @@ func launch(x,y):
 	
 
 
-func _process(delta: float) -> void:
-	
+func _physics_process(delta: float) -> void:
+	if not physique:
+		move_and_slide()
+		current.update(delta)
+		return
+	super(delta)
+
+func _process(_delta: float) -> void:
+
 	is_controlled=true
-	if not physique:move_and_slide();current.update(delta);
 	if not current.is_busy():
 		ai()
 
